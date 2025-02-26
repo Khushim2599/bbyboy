@@ -10,7 +10,7 @@ if "candles" not in st.session_state:
     st.session_state.candles = [True] * 5  # 5 candles (True = lit, False = blown out)
 
 # Display the cake with candles
-st.write("Click on the candles to blow them out! 🕯️💨")
+st.write("Click on the heart to get your present! ❤️")
 
 # Create buttons for each candle
 cols = st.columns(5)
@@ -20,9 +20,9 @@ for i in range(5):
             if st.button(f"🕯️", key=f"candle_{i}"):
                 st.session_state.candles[i] = False  # Blow out the candle
         else:
-            st.write("❌")  # Show extinguished candle
+            st.write("😘")  # Show extinguished candle
 
 # Check if all candles are blown out
 if all(not c for c in st.session_state.candles):
-    st.success(f"🎉 Yay! All candles are out! Make a wish, {birthday_person}! 🎁")
+    st.success(f"🎉 Happy Birthday Baby! Make a wish! 🎂")
     st.balloons()  # Fun animation
