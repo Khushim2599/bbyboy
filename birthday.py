@@ -1,29 +1,19 @@
 import streamlit as st
-import base64
-from PIL import Image
 
 # Hardcoded name
 birthday_person = "Dhuv"  # Change this to the name you want
 
-# Function to convert local image to Base64
-def get_base64_of_image(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode()
+# Background image URL (replace this with your uploaded image link)
+background_image_url = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2Fpink-heart-cas-background--511369732702023413%2F&psig=AOvVaw2Vm7vnDszQPlrlSujkLbhr&ust=1740683434176000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCB6p-F4osDFQAAAAAdAAAAABAI"  # CHANGE THIS!
 
-# Path to your local image (Make sure it's correct!)
-image_path = "C:/Users/khushi/Desktop/Extras/background.jpg"  # Replace with actual path
-
-# Convert image to Base64
-base64_image = get_base64_of_image(image_path)
-
-# Apply CSS with Base64-encoded image & custom fonts
+# Apply CSS with Online Background Image & Bubble Font
 st.markdown(
     f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap');
 
     body {{
-        background-image: url("data:image/jpg;base64,{base64_image}");
+        background-image: url("{background_image_url}");
         background-size: cover;
         background-position: center;
         font-family: 'Baloo 2', cursive;
