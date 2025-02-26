@@ -1,4 +1,4 @@
-import streamlit as st
+rimport streamlit as st
 
 # Hardcoded name
 birthday_person = "Dhuv"  # Change this to the name you want
@@ -35,7 +35,7 @@ st.markdown(
 st.markdown(f'<h1 class="title">🎂 Happy Birthday {birthday_person}! 🎉</h1>', unsafe_allow_html=True)
 
 # Session state to track candles
-if "candles" not in st.session_state:
+if "heart" not in st.session_state:
     st.session_state.heart = [True] * 5  # 5 candles (True = lit, False = blown out)
 
 # Display the cake with candles
@@ -45,7 +45,7 @@ st.write("Click on the hearts twice to get your present! ❤️")
 cols = st.columns(5)
 for i in range(5):
     with cols[i]:
-        if st.session_state.candles[i]:
+        if st.session_state.heart[i]:
             if st.button(f"❤️", key=f"heart_{i}"):
                 st.session_state.heart[i] = False  # Blow out the candle
         else:
