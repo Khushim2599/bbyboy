@@ -12,7 +12,7 @@ st.markdown(
         background-size: cover;
         background-position: center;
         font-family: 'Comic Sans MS', cursive, sans-serif;
-        color: #ff69b4; /* Cute pink color */
+        
     }}
     .stApp {{
         background: rgba(255, 255, 255, 0.7); /* White transparent background for readability */
