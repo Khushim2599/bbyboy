@@ -1,4 +1,4 @@
-rimport streamlit as st
+import streamlit as st
 
 # Hardcoded name
 birthday_person = "Dhuv"  # Change this to the name you want
