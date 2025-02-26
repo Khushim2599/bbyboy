@@ -8,7 +8,7 @@ st.markdown(
     f"""
     <style>
     body {{
-        background-image: url("https://i.pinimg.com/736x/78/cf/f1/78cff158ffdafb8705c2b957172e0753.jpg");
+        background-image: url("https://i.pinimg.com/736x/60/b3/96/60b3965658bf66633f59f1ff0e842c55.jpg");
         background-size: cover;
         background-position: center;
         font-family: 'Comic Sans MS', cursive, sans-serif;
