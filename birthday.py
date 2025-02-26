@@ -1,23 +1,36 @@
 import streamlit as st
+import base64
+from PIL import Image
 
 # Hardcoded name
 birthday_person = "Dhuv"  # Change this to the name you want
 
-# Custom CSS for background and styling
+# Function to convert local image to Base64
+def get_base64_of_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# Path to your local image (Make sure it's correct!)
+image_path = "C:/Users/khushi/Desktop/Extras/background.jpg"  # Replace with actual path
+
+# Convert image to Base64
+base64_image = get_base64_of_image(image_path)
+
+# Apply CSS with Base64-encoded image & custom fonts
 st.markdown(
     f"""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap');
+
     body {{
-        background-image: url("https://i.pinimg.com/736x/78/cf/f1/78cff158ffdafb8705c2b957172e0753.jpg");
+        background-image: url("data:image/jpg;base64,{base64_image}");
         background-size: cover;
         background-position: center;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-family: 'Baloo 2', cursive;
         color: #ff69b4; /* Cute pink color */
-        
     }}
     .stApp {{
-        
-        background-image: url("https://i.pinimg.com/736x/78/cf/f1/78cff158ffdafb8705c2b957172e0753.jpg");
+        background: rgba(255, 255, 255, 0.7); /* White transparent background for readability */
         padding: 10px;
         border-radius: 15px;
     }}
@@ -28,32 +41,42 @@ st.markdown(
         color: #ff69b4;
         text-shadow: 2px 2px #ffb6c1;
     }}
+    .instructions {{
+        font-size: 20px;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+        margin-top: 20px;
+    }}
     </style>
     """,
     unsafe_allow_html=True
 )
 
-# Title with custom cute style
+# Title with custom bubble-style font
 st.markdown(f'<h1 class="title">🎂 Happy Birthday {birthday_person}! 🎉</h1>', unsafe_allow_html=True)
 
-# Session state to track candles
-if "heart" not in st.session_state:
-    st.session_state.heart = [True] * 5  # 5 candles (True = lit, False = blown out)
+# Instruction text in black
+st.markdown('<p class="instructions">Click on the hearts twice to get your present! ❤️</p>', unsafe_allow_html=True)
 
-# Display the cake with candles
-st.write("Click on the hearts twice to get your present! ❤️")
+# Session state to track hearts
+if "hearts" not in st.session_state:
+    st.session_state.hearts = [0] * 5  # 0 means not clicked, 1 means clicked once, 2 means present unlocked
 
-# Create buttons for each candle
+# Create columns for heart buttons
 cols = st.columns(5)
 for i in range(5):
     with cols[i]:
-        if st.session_state.heart[i]:
+        if st.session_state.hearts[i] == 0:  # First click
             if st.button(f"❤️", key=f"heart_{i}"):
-                st.session_state.heart[i] = False  # Blow out the candle
+                st.session_state.hearts[i] = 1  # First click registers
+        elif st.session_state.hearts[i] == 1:  # Second click
+            if st.button(f"💖", key=f"heart_clicked_{i}"):  # Change button appearance
+                st.session_state.hearts[i] = 2  # Unlock present
         else:
-            st.write("😘")  # Show extinguished candle
+            st.write("🎁")  # Show present after second click
 
-# Check if all candles are blown out
-if all(not c for c in st.session_state.heart):
-    st.success(f"🎉 Happy Birthdat Baby! Make a wish! 🎂")
+# Check if all hearts are unlocked
+if all(h == 2 for h in st.session_state.hearts):
+    st.success(f"🎉 Happy Birthday Baby! Make a wish! 🎂")
     st.balloons()  # Fun animation
