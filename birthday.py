@@ -17,6 +17,7 @@ st.markdown(
     }}
     .stApp {{
         
+        background-image: url("https://i.pinimg.com/736x/60/b3/96/60b3965658bf66633f59f1ff0e842c55.jpg");
         padding: 10px;
         border-radius: 15px;
     }}
