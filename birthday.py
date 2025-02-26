@@ -20,7 +20,8 @@ st.markdown(
         color: #ff69b4; /* Cute pink color */
     }}
     .stApp {{
-        background: rgba(255, 255, 255, 0.7); /* White transparent background for readability */
+        background_image_url = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2Fpink-heart-cas-background--511369732702023413%2F&psig=AOvVaw2Vm7vnDszQPlrlSujkLbhr&ust=1740683434176000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKCB6p-F4osDFQAAAAAdAAAAABAI"  # CHANGE THIS!
+
         padding: 10px;
         border-radius: 15px;
     }}
