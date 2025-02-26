@@ -17,7 +17,7 @@ cols = st.columns(5)
 for i in range(5):
     with cols[i]:
         if st.session_state.candles[i]:
-            if st.button(f"🕯️", key=f"candle_{i}"):
+            if st.button(f"❤️", key=f"candle_{i}"):
                 st.session_state.candles[i] = False  # Blow out the candle
         else:
             st.write("😘")  # Show extinguished candle
